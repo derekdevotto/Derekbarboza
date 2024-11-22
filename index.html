@@ -20,20 +20,27 @@
     <meta property="og:image" content="path/to/your/image.jpg">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #34495e;
-            --accent-color: #e74c3c;
-            --text-primary: #2c3e50;
-            --text-secondary: #7f8c8d;
-            --background-light: #f8f9fa;
-            --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            /* Paleta minimalista */
+            --primary-color: #333333;    /* Gris oscuro */
+            --secondary-color: #666666;  /* Gris medio */
+            --accent-color: #9c6644;     /* Terracota */
+            --text-primary: #1a1a1a;     /* Casi negro */
+            --text-secondary: #4d4d4d;   /* Gris oscuro */
+            --background-light: #f8f8f8; /* Gris muy claro */
+            
+            /* Colores complementarios */
+            --success-color: #7d8471;    /* Verde grisáceo */
+            --warning-color: #d4b499;    /* Beige */
+            --error-color: #a35d6a;      /* Rosa antiguo */
+            --info-color: #8e9aaf;       /* Azul grisáceo */
+            
+            /* Sombras refinadas */
+            --card-shadow: 0 8px 24px rgba(44, 82, 130, 0.1);
+            --shadow-sm: 0 2px 8px rgba(56, 161, 105, 0.05);
+            --shadow-md: 0 4px 12px rgba(39, 103, 73, 0.08);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Montserrat', sans-serif;
-            --error-color: #f44336;
-            --success-color: #4caf50;
-            --warning-color: #ff9800;
-            --info-color: #2196f3;
             --spacing-xs: 0.25rem;
             --spacing-sm: 0.5rem;
             --spacing-md: 1rem;
@@ -65,7 +72,7 @@
         .header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 3rem 0;
+            padding: 4rem 0;
             position: relative;
             overflow: hidden;
         }
@@ -77,8 +84,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
-            pointer-events: none;
+            background: url('data:image/svg+xml,...') center/cover;
+            opacity: 0.1;
         }
 
         .header h1 {
@@ -105,18 +112,18 @@
             flex-wrap: wrap;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-radius: 50px;
-            padding: 0.5rem;
-            box-shadow: var(--card-shadow);
+            border-radius: 16px;
+            padding: 0.75rem;
+            box-shadow: var(--shadow-md);
             position: sticky;
             top: 20px;
             z-index: 1000;
         }
 
         .nav-tab {
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             background: white;
-            border-radius: 25px;
+            border-radius: 12px;
             color: var(--text-primary);
             text-decoration: none;
             transition: var(--transition);
@@ -127,18 +134,18 @@
         }
 
         .nav-tab:hover {
-            background: var(--primary-color);
+            background: var(--secondary-color);
             color: white;
             transform: translateY(-2px);
         }
 
         .seccion {
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 2.5rem;
             margin: 2rem 0;
             border: 1px solid rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             position: relative;
             overflow: hidden;
@@ -155,23 +162,24 @@
         }
 
         .seccion:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
         }
 
         h2 {
             color: #000000;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
             display: flex;
             align-items: center;
             gap: 1rem;
             font-family: var(--font-heading);
             font-size: 2rem;
-            color: var(--primary-color);
+            color: var(--text-primary);
             margin-bottom: 2rem;
             position: relative;
             padding-bottom: 1rem;
+            letter-spacing: -0.5px;
         }
 
         h2::after {
@@ -190,17 +198,17 @@
         }
 
         .importante {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
             border-radius: 12px;
             padding: 1.5rem;
             margin: 1.5rem 0;
             position: relative;
-            border-left: 4px solid #1976d2;
+            border-left: 4px solid var(--secondary-color);
         }
 
         .complicaciones {
-            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
-            border-left: 4px solid var(--accent-color);
+            background: linear-gradient(135deg, #fef5f5 0%, #fed7d7 100%);
+            border-left: 4px solid var(--error-color);
         }
 
         ul {
@@ -368,9 +376,9 @@
 
         .info-box {
             background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 2rem;
             transition: all 0.3s ease;
         }
@@ -470,21 +478,19 @@
         }
 
         .control-btn {
-            padding: 0.8rem 1.5rem;
-            background: var(--primary-color);
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
             color: white;
             border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            border-radius: 12px;
+            padding: 0.8rem 1.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
 
         .control-btn:hover {
-            background: var(--secondary-color);
             transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         /* Estilos para el botón de AR */
@@ -996,6 +1002,9 @@
     </style>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="header">
