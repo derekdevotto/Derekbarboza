@@ -785,6 +785,167 @@
                 height: 200px !important;
             }
         }
+
+        /* Agregar estos estilos mejorados para móvil */
+        @media (max-width: 768px) {
+            /* Ajustes generales */
+            body {
+                font-size: 16px;
+            }
+
+            /* Container más compacto */
+            .container {
+                padding: 0 1rem;
+                margin: 0 auto;
+            }
+
+            /* Header más compacto */
+            .header {
+                padding: 1rem 0;
+                margin-bottom: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+                padding: 0.5rem;
+            }
+
+            /* Navegación mejorada */
+            .nav-tabs {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 4rem 1rem;
+                margin: 0;
+                z-index: 1000;
+                transition: left 0.3s ease;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-tabs.active {
+                left: 0;
+            }
+
+            .nav-tab {
+                width: 100%;
+                text-align: left;
+                padding: 1rem;
+                border-radius: 8px;
+            }
+
+            /* Menú hamburguesa */
+            .mobile-menu-button {
+                display: block;
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                z-index: 1001;
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: var(--shadow-md);
+            }
+
+            /* Overlay para el menú */
+            .menu-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+
+            .menu-overlay.active {
+                display: block;
+            }
+
+            /* Secciones más compactas */
+            .seccion {
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 10px;
+            }
+
+            .seccion::before {
+                width: 3px;
+            }
+
+            /* Títulos más pequeños */
+            h2 {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+            }
+
+            /* Cards más compactas */
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin: 1rem 0;
+            }
+
+            .info-card {
+                padding: 1rem;
+            }
+
+            /* Listas más compactas */
+            li {
+                padding: 0.3rem 0 0.3rem 1.5rem;
+            }
+
+            /* Botón de volver arriba más pequeño */
+            .top-button {
+                bottom: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+            }
+
+            /* Ajustes para el modelo 3D */
+            model-viewer {
+                height: 250px !important;
+                width: 100% !important;
+            }
+
+            /* Ajustes para imágenes */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        /* Ajustes para pantallas muy pequeñas */
+        @media (max-width: 375px) {
+            body {
+                font-size: 14px;
+            }
+
+            .header h1 {
+                font-size: 1.3rem;
+            }
+
+            .seccion {
+                padding: 0.8rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+        }
     </style>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -794,6 +955,7 @@
         <h1>PARCIAL DE DEREK BARBOZA</h1>
     </div>
 
+    <div class="menu-overlay"></div>
     <button class="mobile-menu-button" aria-label="Menú">
         <i class="fas fa-bars"></i>
     </button>
@@ -1366,22 +1528,28 @@
     function initMobileMenu() {
         const menuButton = document.querySelector('.mobile-menu-button');
         const navTabs = document.querySelector('.nav-tabs');
+        const overlay = document.querySelector('.menu-overlay');
         
-        if (menuButton && navTabs) {
+        if (menuButton && navTabs && overlay) {
             menuButton.addEventListener('click', () => {
-                navTabs.classList.toggle('mobile');
                 navTabs.classList.toggle('active');
-                
-                // Cambiar el ícono
-                const icon = menuButton.querySelector('i');
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
+                overlay.classList.toggle('active');
+                menuButton.querySelector('i').classList.toggle('fa-bars');
+                menuButton.querySelector('i').classList.toggle('fa-times');
+            });
+
+            // Cerrar menú al hacer clic en el overlay
+            overlay.addEventListener('click', () => {
+                navTabs.classList.remove('active');
+                overlay.classList.remove('active');
+                menuButton.querySelector('i').classList.replace('fa-times', 'fa-bars');
             });
 
             // Cerrar menú al hacer clic en un enlace
             navTabs.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
-                    navTabs.classList.remove('mobile', 'active');
+                    navTabs.classList.remove('active');
+                    overlay.classList.remove('active');
                     menuButton.querySelector('i').classList.replace('fa-times', 'fa-bars');
                 });
             });
