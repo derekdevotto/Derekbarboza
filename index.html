@@ -1336,6 +1336,72 @@
         .search-result:last-child {
             border-bottom: none;
         }
+
+        /* Estilos para el contenedor de video */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* Ratio 16:9 */
+            margin: 2rem 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* Estilos para controles de video personalizados */
+        video::-webkit-media-controls {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 0 0 15px 15px;
+        }
+
+        @media (max-width: 768px) {
+            .video-container {
+                padding-top: 75%; /* Ratio más cuadrado para móviles */
+            }
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        /* Ajuste responsivo para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .video-wrapper {
+                max-width: 100%;
+                margin: 1rem auto;
+            }
+            
+            .video-container {
+                padding-bottom: 45%; /* Ligeramente más alto en móviles para mejor visualización */
+            }
+        }
     </style>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -1433,6 +1499,21 @@
                 <h2><i class="fas fa-shield-alt"></i> Prevención y Tratamiento</h2>
                 <p>No existe una forma conocida de prevenir la diabetes tipo 1. El tratamiento se enfoca en controlar la cantidad de glucosa en la sangre mediante el uso de insulina, y una dieta y un estilo de vida saludables para evitar complicaciones.</p>
             </div>
+
+            <!-- Nueva sección de video -->
+            <div class="seccion">
+                <h2><i class="fas fa-video"></i> Video Explicativo</h2>
+                <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 2rem 0;">
+                    <iframe 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                        src="https://drive.google.com/file/d/13yiZ1lQ4s8RlrogKlY5mUY1oNN3rFXrF/preview"
+                        allow="autoplay"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
         </section>
 
         <div class="section-divider"></div>
@@ -1570,7 +1651,7 @@
                 <h3 class="icon-title"><i class="fas fa-microscope"></i> Islotes de Langerhans</h3>
                 <div class="grid-container">
                     <div class="info-box">
-                        <h4>Tipos de Células</h4>
+                        <h4>Tipos de Clulas</h4>
                         <ul>
                             <li>Células alfa: Producen glucagón</li>
                             <li>Células beta: Secretan insulina</li>
@@ -2006,3 +2087,4 @@
     </script>
 </body>
 </html>
+
