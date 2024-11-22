@@ -53,6 +53,17 @@
             --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
             --shadow-lg: 0 8px 16px rgba(0,0,0,0.14);
             --shadow-xl: 0 12px 24px rgba(0,0,0,0.16);
+            
+            /* Variables para modo oscuro */
+            --dark-bg: #121212;
+            --dark-surface: #1e1e1e;
+            --dark-card: #242424;
+            --dark-text: #e0e0e0;
+            --dark-text-secondary: #a0a0a0;
+            --dark-border: rgba(255, 255, 255, 0.1);
+            --dark-accent: #b87855;
+            --dark-hover: #2c2c2c;
+            --dark-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -846,13 +857,13 @@
                 font-size: 16px;
             }
 
-            /* Container más compacto */
+            /* Container ms compacto */
             .container {
                 padding: 0 1rem;
                 margin: 0 auto;
             }
 
-            /* Header más compacto */
+            /* Header ms compacto */
             .header {
                 padding: 1rem 0;
                 margin-bottom: 1rem;
@@ -999,6 +1010,332 @@
                 font-size: 1.2rem;
             }
         }
+
+        /* Agregar estos estilos */
+        body.dark-mode {
+            background: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .dark-mode .seccion {
+            background: var(--dark-card);
+            color: var(--dark-text);
+        }
+
+        .dark-mode .nav-tab {
+            background: var(--dark-card);
+            color: var(--dark-text);
+        }
+
+        .dark-mode .nav-tabs {
+            background: rgba(45, 45, 45, 0.95);
+        }
+
+        .dark-mode .info-card {
+            background: var(--dark-card);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: var(--accent-color);
+            z-index: 1001;
+            transition: width 0.2s ease;
+        }
+
+        /* Estilos para la búsqueda */
+        .search-container {
+            position: relative;
+            margin: 1rem;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--secondary-color);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .search-result {
+            padding: 0.8rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .search-result:hover {
+            background: var(--background-light);
+        }
+
+        /* Estilos para el tiempo de lectura */
+        .reading-time {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reading-time i {
+            font-size: 16px;
+        }
+
+        /* Ajuste para modo oscuro */
+        .dark-mode .reading-time {
+            background: var(--dark-accent);
+            color: white;
+        }
+
+        /* Estilos mejorados para modo oscuro */
+        body.dark-mode {
+            background: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .dark-mode .header {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+        }
+
+        .dark-mode .nav-tabs {
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--dark-border);
+        }
+
+        .dark-mode .nav-tab {
+            background: var(--dark-card);
+            color: var(--dark-text);
+        }
+
+        .dark-mode .nav-tab:hover {
+            background: var(--dark-hover);
+            transform: translateY(-2px);
+        }
+
+        .dark-mode .seccion {
+            background: var(--dark-surface);
+            border: 1px solid var(--dark-border);
+            box-shadow: var(--dark-shadow);
+        }
+
+        .dark-mode .seccion:hover {
+            background: var(--dark-card);
+        }
+
+        .dark-mode h2, 
+        .dark-mode h3, 
+        .dark-mode h4 {
+            color: var(--dark-text);
+        }
+
+        .dark-mode p {
+            color: var(--dark-text-secondary);
+        }
+
+        .dark-mode .importante {
+            background: rgba(184, 120, 85, 0.1);
+            border-left: 4px solid var(--dark-accent);
+        }
+
+        .dark-mode .complicaciones {
+            background: rgba(163, 93, 106, 0.1);
+            border-left: 4px solid var(--error-color);
+        }
+
+        .dark-mode .info-box {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+        }
+
+        /* Botón de modo oscuro mejorado */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            box-shadow: var(--shadow-md);
+        }
+
+        #topButton {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Efectos hover mejorados */
+        .dark-mode-toggle:hover,
+        #topButton:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Ajustes para modo oscuro */
+        .dark-mode .dark-mode-toggle,
+        .dark-mode #topButton {
+            background: var(--dark-accent);
+            color: var(--dark-text);
+        }
+
+        /* Ajustes para dispositivos móviles */
+        @media (max-width: 768px) {
+            .dark-mode-toggle {
+                bottom: 1.5rem;
+                left: 1.5rem;
+                width: 40px;
+                height: 40px;
+            }
+
+            #topButton {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Animación suave para la transición */
+        body, 
+        .header, 
+        .nav-tabs, 
+        .nav-tab, 
+        .seccion, 
+        h2, h3, h4, p, 
+        .importante, 
+        .complicaciones, 
+        .info-box {
+            transition: all 0.3s ease;
+        }
+
+        /* Estilos mejorados para el buscador en modo oscuro */
+        .dark-mode .search-container {
+            background: var(--dark-surface);
+            border: 1px solid var(--dark-border);
+        }
+
+        .dark-mode #searchInput {
+            background: var(--dark-card);
+            color: var(--dark-text);
+            border: 1px solid var(--dark-border);
+        }
+
+        .dark-mode #searchInput::placeholder {
+            color: var(--dark-text-secondary);
+        }
+
+        .dark-mode #searchResults {
+            background: var(--dark-surface);
+            border: 1px solid var(--dark-border);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .dark-mode .search-result {
+            background: var(--dark-card);
+            color: var(--dark-text);
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--dark-border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .dark-mode .search-result:hover {
+            background: var(--dark-hover);
+        }
+
+        /* Estilos base del buscador */
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 1rem auto;
+            padding: 0 1rem;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        #searchResults {
+            position: absolute;
+            top: 100%;
+            left: 1rem;
+            right: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-result {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .search-result:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .search-result:last-child {
+            border-bottom: none;
+        }
     </style>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -1011,14 +1348,23 @@
         <h1>PARCIAL DE DEREK BARBOZA</h1>
     </div>
 
+    <!-- Agregar el botón de modo oscuro aquí -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Navegación Principal -->
     <nav class="nav-tabs container">
         <a href="#diabetes" class="nav-tab"><i class="fas fa-capsules"></i> Diabetes Tipo 1</a>
         <a href="#endocrino" class="nav-tab"><i class="fas fa-dna"></i> Sistema Endocrino</a>
-        <a href="#pancreas" class="nav-tab"><i class="fas fa-puzzle-piece"></i> El Páncreas</a>
+        <a href="#pancreas" class="nav-tab"><i class="fas fa-puzzle-piece"></i> El Pncreas</a>
         <a href="#modelo3d" class="nav-tab">
             <i class="fas fa-cube"></i> Ver Modelo 3D
         </a>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar contenido...">
+            <div id="searchResults" class="search-results"></div>
+        </div>
     </nav>
 
     <div class="container">
@@ -1551,16 +1897,20 @@
     function handleTopButton() {
         const topButton = document.getElementById('topButton');
         
-        // Mostrar/ocultar el botón basado en el scroll
+        // Ocultar el botón inicialmente
+        topButton.style.opacity = '0';
+        topButton.style.visibility = 'hidden';
+        
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
-                topButton.classList.add('visible');
+                topButton.style.opacity = '1';
+                topButton.style.visibility = 'visible';
             } else {
-                topButton.classList.remove('visible');
+                topButton.style.opacity = '0';
+                topButton.style.visibility = 'hidden';
             }
         });
 
-        // Funcionalidad de volver arriba
         topButton.addEventListener('click', (e) => {
             e.preventDefault();
             window.scrollTo({
@@ -1584,6 +1934,75 @@
             }, 100);
         }
     });
+
+    // Agregar este script
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDark);
+        
+        // Cambiar el ícono
+        const icon = document.querySelector('.dark-mode-toggle i');
+        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    // Verificar preferencia guardada al cargar la página
+    document.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.dark-mode-toggle i').className = 'fas fa-sun';
+        }
+    });
+
+    // Barra de progreso
+    function updateProgressBar() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.querySelector('.progress-bar').style.width = scrolled + '%';
+    }
+
+    window.addEventListener('scroll', updateProgressBar);
+
+    // Búsqueda mejorada
+    function searchContent() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const sections = document.querySelectorAll('.seccion');
+        const results = document.getElementById('searchResults');
+        results.innerHTML = '';
+
+        if (searchTerm.length < 2) {
+            results.style.display = 'none';
+            return;
+        }
+
+        results.style.display = 'block';
+        let found = false;
+
+        sections.forEach(section => {
+            if (section.textContent.toLowerCase().includes(searchTerm)) {
+                const result = document.createElement('div');
+                result.className = 'search-result';
+                result.textContent = section.querySelector('h2, h3')?.textContent || 'Sección';
+                result.onclick = () => {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById('searchInput').value = '';
+                    results.style.display = 'none';
+                };
+                results.appendChild(result);
+                found = true;
+            }
+        });
+
+        if (!found) {
+            const noResults = document.createElement('div');
+            noResults.className = 'search-result';
+            noResults.textContent = 'No se encontraron resultados';
+            results.appendChild(noResults);
+        }
+    }
+
+    document.getElementById('searchInput').addEventListener('input', searchContent);
     </script>
 </body>
 </html>
