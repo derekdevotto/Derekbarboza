@@ -955,11 +955,6 @@
         <h1>PARCIAL DE DEREK BARBOZA</h1>
     </div>
 
-    <div class="menu-overlay"></div>
-    <button class="mobile-menu-button" aria-label="Menú">
-        <i class="fas fa-bars"></i>
-    </button>
-
     <!-- Navegación Principal -->
     <nav class="nav-tabs container">
         <a href="#diabetes" class="nav-tab"><i class="fas fa-capsules"></i> Diabetes Tipo 1</a>
@@ -1522,44 +1517,6 @@
     // Inicializar cuando el DOM esté listo
     document.addEventListener('DOMContentLoaded', () => {
         handleTopButton();
-    });
-
-    // Agregar al final del script existente
-    function initMobileMenu() {
-        const menuButton = document.querySelector('.mobile-menu-button');
-        const navTabs = document.querySelector('.nav-tabs');
-        const overlay = document.querySelector('.menu-overlay');
-        
-        if (menuButton && navTabs && overlay) {
-            menuButton.addEventListener('click', () => {
-                navTabs.classList.toggle('active');
-                overlay.classList.toggle('active');
-                menuButton.querySelector('i').classList.toggle('fa-bars');
-                menuButton.querySelector('i').classList.toggle('fa-times');
-            });
-
-            // Cerrar menú al hacer clic en el overlay
-            overlay.addEventListener('click', () => {
-                navTabs.classList.remove('active');
-                overlay.classList.remove('active');
-                menuButton.querySelector('i').classList.replace('fa-times', 'fa-bars');
-            });
-
-            // Cerrar menú al hacer clic en un enlace
-            navTabs.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navTabs.classList.remove('active');
-                    overlay.classList.remove('active');
-                    menuButton.querySelector('i').classList.replace('fa-times', 'fa-bars');
-                });
-            });
-        }
-    }
-
-    // Agregar al DOMContentLoaded
-    document.addEventListener('DOMContentLoaded', () => {
-        handleTopButton();
-        initMobileMenu();
     });
 
     // Manejar cambios de orientación
