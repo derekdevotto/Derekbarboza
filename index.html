@@ -667,6 +667,124 @@
             font-size: 1.2rem;
             color: var(--text-primary);
         }
+
+        @media (max-width: 768px) {
+            /* Ajustes de header */
+            .header h1 {
+                font-size: 1.8rem;
+                padding: 0.5rem;
+            }
+
+            /* Ajustes de navegación */
+            .nav-tabs {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .nav-tab {
+                width: 90%;
+                text-align: center;
+                padding: 0.6rem 1rem;
+            }
+
+            /* Ajustes de contenedor */
+            .container {
+                padding: 0 1rem;
+            }
+
+            /* Ajustes de secciones */
+            .seccion {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+
+            /* Ajustes de tarjetas */
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            /* Ajustes de texto */
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            /* Ajustes del modelo 3D */
+            model-viewer {
+                height: 300px !important;
+            }
+
+            /* Ajustes de botones */
+            .top-button {
+                bottom: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+            }
+
+            /* Ajustes para el menú móvil */
+            .mobile-menu-button {
+                display: block;
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                z-index: 1001;
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+            }
+
+            /* Menú móvil */
+            .nav-tabs.mobile {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                z-index: 1000;
+                padding: 4rem 1rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-tabs.mobile.active {
+                transform: translateX(0);
+            }
+        }
+
+        /* Ajustes para pantallas muy pequeñas */
+        @media (max-width: 375px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .seccion {
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Ajustes para la orientación horizontal en móviles */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .nav-tabs.mobile {
+                padding: 2rem 1rem;
+                overflow-y: auto;
+            }
+
+            model-viewer {
+                height: 200px !important;
+            }
+        }
     </style>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -675,6 +793,10 @@
     <div class="header">
         <h1>PARCIAL DE DEREK BARBOZA</h1>
     </div>
+
+    <button class="mobile-menu-button" aria-label="Menú">
+        <i class="fas fa-bars"></i>
+    </button>
 
     <!-- Navegación Principal -->
     <nav class="nav-tabs container">
@@ -1238,6 +1360,48 @@
     // Inicializar cuando el DOM esté listo
     document.addEventListener('DOMContentLoaded', () => {
         handleTopButton();
+    });
+
+    // Agregar al final del script existente
+    function initMobileMenu() {
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const navTabs = document.querySelector('.nav-tabs');
+        
+        if (menuButton && navTabs) {
+            menuButton.addEventListener('click', () => {
+                navTabs.classList.toggle('mobile');
+                navTabs.classList.toggle('active');
+                
+                // Cambiar el ícono
+                const icon = menuButton.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            navTabs.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navTabs.classList.remove('mobile', 'active');
+                    menuButton.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                });
+            });
+        }
+    }
+
+    // Agregar al DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => {
+        handleTopButton();
+        initMobileMenu();
+    });
+
+    // Manejar cambios de orientación
+    window.addEventListener('orientationchange', () => {
+        // Reajustar el modelo 3D y otros elementos si es necesario
+        if (modelViewer) {
+            setTimeout(() => {
+                modelViewer.requestUpdate();
+            }, 100);
+        }
     });
     </script>
 </body>
